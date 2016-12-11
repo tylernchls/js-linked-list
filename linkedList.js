@@ -7,14 +7,16 @@ function linkedListGenerator(){
 
   var head = null;
   var tail = null;
-
+  var currentIndex = 0;
 
   function getHead () {
     return head;
   }
+
   function getTail () {
     return tail;
   }
+
   function add (value){
   var newNode = {
       value : value,
@@ -31,7 +33,17 @@ function linkedListGenerator(){
 
 
   function remove () {}
-  function get () {}
+  function get (value) {
+    var counter = 0;
+    var currentNode = head;
+    if (value === 0) {
+      return currentNode;
+    }
+    while (currentNode != 0 ) {
+      counter +=1;
+    }
+  }
+
   function insert () {}
 
   return {
