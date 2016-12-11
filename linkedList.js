@@ -7,7 +7,6 @@ function linkedListGenerator(){
 
   var head = null;
   var tail = null;
-  var currentIndex = 0;
 
   function getHead () {
     return head;
@@ -26,7 +25,8 @@ function linkedListGenerator(){
       head = newNode;
       tail = newNode;
     } else {
-      tail = newNode;
+      tail.next = newNode;  //points current next to newNode
+      tail = newNode;    // tail now is on added Node
     }
     return newNode;
   }
@@ -36,12 +36,19 @@ function linkedListGenerator(){
   function get (value) {
     var counter = 0;
     var currentNode = head;
+
     if (value === 0) {
       return currentNode;
     }
-    while (currentNode != 0 ) {
-      counter +=1;
+    while (currentNode.next != null) {
+      counter += 1;
+      console.log(counter);
+      currentNode = currentNode.next;    // sets currentNode to the next node
+      if ( value === counter) {    // will return currentNode when value and counter match
+        return currentNode;
+      }
     }
+    return false;  // returns false if node is not found
   }
 
   function insert () {}
