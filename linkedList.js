@@ -32,9 +32,14 @@ function linkedListGenerator(){
   }
 
 
-  function remove (value) {
-    var toRemove = get();
+  function remove (position) {
+    var nodeToRemove = get();
+
+   console.log(nodeToRemove);
+
+
   }
+
   function get (value) {
     var counter = 0;
     var currentNode = head;
@@ -44,7 +49,6 @@ function linkedListGenerator(){
     }
     while (currentNode.next != null) {
       counter += 1;
-      console.log(counter);
       currentNode = currentNode.next;    // sets currentNode to the next node
       if ( value === counter) {    // will return currentNode when value and counter match
         return currentNode;
@@ -69,3 +73,4 @@ function linkedListGenerator(){
 
 };
 
+var mylist = linkedListGenerator();
