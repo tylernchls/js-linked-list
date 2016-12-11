@@ -32,25 +32,35 @@ function linkedListGenerator(){
   }
 
 
-  function remove (position) {
-    var nodeToRemove = get();
+  function remove (number) {
+    var nodeToRemove = get(number);
+    var nodeBeforeRemove = get(number - 1);
+    var nextNode = get(number + 1);
+    if ( number === 0){       // if number = 0 , changes head to nextNode & removes head
+      head = nextNode;
+    }
+    if ( nodeToRemove.next === null){       // test to remove a tail, checks .next to see if null,
+      tail = nodeBeforeRemove;              // sets tail to nodeBefoe
+      tail.next = null;                     // sets next property of node to null * is new tail
+  }
 
-   console.log(nodeToRemove);
+
+
 
 
   }
 
-  function get (value) {
+  function get (number) {
     var counter = 0;
     var currentNode = head;
 
-    if (value === 0) {
+    if (number === 0) {
       return currentNode;
     }
     while (currentNode.next != null) {
       counter += 1;
       currentNode = currentNode.next;    // sets currentNode to the next node
-      if ( value === counter) {    // will return currentNode when value and counter match
+      if ( number === counter) {    // will return currentNode when value and counter match
         return currentNode;
       }
     }
@@ -73,4 +83,10 @@ function linkedListGenerator(){
 
 };
 
-var mylist = linkedListGenerator();
+var myList = linkedListGenerator();
+myList.add("djkfjdkfjkld");
+myList.add("jfkdjfjdljyuuuttut");
+myList.add("tyler");
+
+console.log("test1", myList.get(0));
+console.log("test", myList.remove(2));
