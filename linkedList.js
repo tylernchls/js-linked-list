@@ -32,7 +32,9 @@ function linkedListGenerator(){
   }
 
 
-  function remove () {}
+  function remove (value) {
+    var toRemove = get();
+  }
   function get (value) {
     var counter = 0;
     var currentNode = head;
@@ -48,7 +50,7 @@ function linkedListGenerator(){
         return currentNode;
       }
     }
-    return false;  // returns false if node is not found
+    return false;  // returns false if node is not found  ?????? why accepted outside loop
   }
 
   function insert () {}
