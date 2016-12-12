@@ -76,14 +76,23 @@ function linkedListGenerator(){
   function insert (value, number) {
       var targetNode = get(number);
       var nodeToInsert = add(value);
-      var nodeBeforeInsert = get(number - 1);
-      var nextNode = get(number + 1);
+      var nodeBeforeInsert = get(number - 1 );
+      var nextNode = get(number + 1 );
 
       if ( number === 0 ) {
           head = nodeToInsert;
           nodeToInsert.next = targetNode;
+      } else {
+        nodeToInsert.next = targetNode;
+        nodeBeforeInsert.next = nodeToInsert;
+        }
 
-      }
+       if (nextNode.next === null) {
+          tail = nextNode;
+          tail.next = null;
+       }
+
+
 
   }
 
@@ -103,8 +112,8 @@ function linkedListGenerator(){
 
 var myList = linkedListGenerator();
 myList.add("jay");
-myList.add("tyler");
+myList.add("tyler")
 myList.add("dickhead");
 myList.add("fuckoff");
-console.log("test", myList.insert("tom" , 0));
-console.log('yo', myList.get(0));
+console.log("test", myList.insert("tom" , 1));
+console.log('yo', myList.get(4));
