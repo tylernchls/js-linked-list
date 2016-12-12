@@ -16,12 +16,16 @@ function linkedListGenerator(){
     return tail;
   }
 
-  function add (value){
-  var newNode = {
-      value : value,
-      next : null
+  function _newNode (value){   // _newNode function
+    return {
+      value: value,
+      next: null
     }
-    if (head === null && tail === null){
+  }
+
+  function add (value){
+    var newNode = _newNode(value)
+    if (head === null && tail === null){   // if newNode has both head and tail, assigns to newNode
       head = newNode;
       tail = newNode;
     } else {
@@ -34,16 +38,16 @@ function linkedListGenerator(){
 
   function remove (number) {
     var nodeToRemove = get(number);
-    var nodeBeforeRemove = get(number - 1);
+    var prevNode = get(number - 1);
     var nextNode = get(number + 1);
     if ( number === 0){       // if number = 0 , changes head to nextNode & removes head
       head = nextNode;
     }
     if ( nodeToRemove.next === null){       // test to remove a tail, checks .next to see if null,
-      tail = nodeBeforeRemove;              // sets tail to nodeBefoe
+      tail = prevNode;              // sets tail to prevNode
       tail.next = null;                     // sets next property of node to null * is new tail
   } else {
-    nodeBeforeRemove.next = nextNode;   // remove a node thats between head and tail
+    prevNode.next = nextNode;   // remove a node thats between head and tail
   }
     return false;
 
@@ -53,7 +57,11 @@ function linkedListGenerator(){
     var counter = 0;
     var currentNode = head;
 
-    if (number === 0) {
+    if (number < 0 ){   // returns false if number less than one
+      return false;
+    }
+
+    if (number === 0) {     // returns currentNode at index zero
       return currentNode;
     }
     while (currentNode.next != null) {
@@ -63,27 +71,29 @@ function linkedListGenerator(){
         return currentNode;
       }
     }
-    return false;  // returns false if node is not found  ?????? why accepted outside loop
+    return false;  // returns false if node is not found
   }
 
   function insert (value, number) {
-      var targetNode = get(number);
-      var nodeToInsert = add(value);
-      var nodeBeforeInsert = get(number - 1 );
+
+      var currNode = get(number);
+      var newNode = _newNode(value);  // asigns newNode to _newNode function passes in value
+      var prevNode = get(number - 1 );
       var nextNode = get(number + 1 );
 
-      if ( number === 0 ) {
-          head = nodeToInsert;
-          nodeToInsert.next = targetNode;
-      } else {
-        nodeToInsert.next = targetNode;
-        nodeBeforeInsert.next = nodeToInsert;
-        }
+      if ( currNode === false) {  // returns false if node is not found
+          return false;
+      }
 
-       if (nextNode.next === null) {
-          tail = nextNode;
-          tail.next = null;
-       }
+      if ( number === 0 ) {       // inserts at the head and points to nextnode
+          head = newNode;
+          newNode.next = currNode;
+
+      } else {
+        prevNode.next = newNode;   // points node for to look at new node added
+        newNode.next = currNode;  // points newnode to point at target node
+
+        }
   }
 
   return {
@@ -96,6 +106,8 @@ function linkedListGenerator(){
   }
 };
 
+
+// test cases all pass
 var myList = linkedListGenerator();
 myList.add("jay");
 myList.add("tyler")
