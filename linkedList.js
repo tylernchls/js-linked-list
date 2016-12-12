@@ -49,13 +49,6 @@ function linkedListGenerator(){
 
   }
 
-
-
-
-
-
-
-
   function get (number) {
     var counter = 0;
     var currentNode = head;
@@ -91,23 +84,16 @@ function linkedListGenerator(){
           tail = nextNode;
           tail.next = null;
        }
-
-
-
   }
 
   return {
-
-  getHead : getHead,
-  getTail : getTail,
-  add : add,
-  remove : remove,
-  get : get,
-  insert : insert
-}
-
-
-
+    getHead : getHead,
+    getTail : getTail,
+    add : add,
+    remove : remove,
+    get : get,
+    insert : insert
+  }
 };
 
 var myList = linkedListGenerator();
@@ -117,3 +103,5 @@ myList.add("dickhead");
 myList.add("fuckoff");
 console.log("test", myList.insert("tom" , 1));
 console.log('yo', myList.get(4));
+
+
