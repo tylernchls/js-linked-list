@@ -42,13 +42,19 @@ function linkedListGenerator(){
     if ( nodeToRemove.next === null){       // test to remove a tail, checks .next to see if null,
       tail = nodeBeforeRemove;              // sets tail to nodeBefoe
       tail.next = null;                     // sets next property of node to null * is new tail
+  } else {
+    nodeBeforeRemove.next = nextNode;   // remove a node thats between head and tail
+  }
+    return false;
+
   }
 
 
 
 
 
-  }
+
+
 
   function get (number) {
     var counter = 0;
@@ -84,9 +90,11 @@ function linkedListGenerator(){
 };
 
 var myList = linkedListGenerator();
-myList.add("djkfjdkfjkld");
-myList.add("jfkdjfjdljyuuuttut");
+myList.add("jay");
 myList.add("tyler");
+myList.add("dickhead");
+myList.add("fuckoff");
 
-console.log("test1", myList.get(0));
+//console.log("test1", myList.get(0));
 console.log("test", myList.remove(2));
+console.log(myList);;
