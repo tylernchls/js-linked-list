@@ -73,7 +73,19 @@ function linkedListGenerator(){
     return false;  // returns false if node is not found  ?????? why accepted outside loop
   }
 
-  function insert () {}
+  function insert (value, number) {
+      var targetNode = get(number);
+      var nodeToInsert = add(value);
+      var nodeBeforeInsert = get(number - 1);
+      var nextNode = get(number + 1);
+
+      if ( number === 0 ) {
+          head = nodeToInsert;
+          nodeToInsert.next = targetNode;
+
+      }
+
+  }
 
   return {
 
@@ -94,7 +106,5 @@ myList.add("jay");
 myList.add("tyler");
 myList.add("dickhead");
 myList.add("fuckoff");
-
-//console.log("test1", myList.get(0));
-console.log("test", myList.remove(2));
-console.log(myList);;
+console.log("test", myList.insert("tom" , 0));
+console.log('yo', myList.get(0));
